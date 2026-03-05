@@ -1,1 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — YT Shorts Frame by HVS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --red: #ff3c3c;
+      --red2: #ff7043;
+      --glass-bg: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.10);
+      --glass-border-strong: rgba(255,255,255,0.18);
+      --text: #f0f0f0;
+      --muted: rgba(255,255,255,0.45);
+      --heading: #fff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      background: #060608;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── Animated BG ─────────────────────────────────────────────────────── */
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.18;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #ff3c3c, transparent 70%);
+      top: -200px; left: -150px;
+      animation-duration: 20s;
+    }
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #7c3aed, transparent 70%);
+      bottom: -100px; right: -150px;
+      animation-duration: 25s;
+      animation-delay: -8s;
+    }
+    .orb-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #ff7043, transparent 70%);
+      top: 40%; left: 60%;
+      animation-duration: 22s;
+      animation-delay: -4s;
+      opacity: 0.12;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(40px, 30px) scale(1.08); }
+    }
+
+    /* Subtle grid */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* ── Layout ──────────────────────────────────────────────────────────── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* ── Header ──────────────────────────────────────────────────────────── */
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,60,60,0.12);
+      border: 1px solid rgba(255,60,60,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff6b6b;
+      margin-bottom: 28px;
+    }
+
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #ff4444;
+      box-shadow: 0 0 6px #ff4444;
+      animation: blink 2s ease infinite;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 800;
+      color: var(--heading);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, #ff3c3c, #ff7043);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      backdrop-filter: blur(12px);
+    }
+
+    .meta-pill svg { opacity: 0.6; }
+
+    /* ── Glass Cards ─────────────────────────────────────────────────────── */
+    .card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--glass-border-strong);
+      transform: translateY(-2px);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* accent-top line */
+    .card-accent::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 32px; right: 32px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,60,60,0.6), transparent);
+    }
+
+    /* ── Section heading ────────────────────────────────────────────────── */
+    .section-num {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .num {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(255,60,60,0.2), rgba(255,112,67,0.2));
+      border: 1px solid rgba(255,60,60,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: #ff6b6b;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+    }
+
+    p + p { margin-top: 12px; }
+
+    /* ── Zero-data highlight card ────────────────────────────────────────── */
+    .highlight-card {
+      background: linear-gradient(135deg, rgba(255,60,60,0.08), rgba(255,112,67,0.05));
+      border: 1px solid rgba(255,60,60,0.25);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 20px 0 0;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .shield-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(255,60,60,0.15);
+      border: 1px solid rgba(255,60,60,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+
+    .highlight-text strong {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .highlight-text span {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Permission table ────────────────────────────────────────────────── */
+    .perm-list { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+
+    .perm-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 14px 18px;
+    }
+
+    .perm-tag {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: rgba(255,112,67,0.15);
+      border: 1px solid rgba(255,112,67,0.3);
+      color: #ff8c5a;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 1px;
+      letter-spacing: 0.04em;
+    }
+
+    .perm-desc {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+
+    /* ── Contact ─────────────────────────────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 520px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .card { padding: 24px 20px; }
+      .wrapper { padding: 40px 16px 80px; }
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .contact-card:hover {
+      border-color: rgba(255,60,60,0.3);
+      background: rgba(255,60,60,0.05);
+    }
+
+    .contact-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 5px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .contact-email {
+      font-size: 13px;
+      color: #ff8a7a;
+      text-decoration: none;
+      word-break: break-all;
+      font-weight: 500;
+    }
+
+    .contact-email:hover { color: #ffb3a8; text-decoration: underline; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-brand span {
+      background: linear-gradient(135deg, #ff3c3c, #ff7043);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-layer">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="bg-grid"></div>
+
+  <div class="wrapper">
+
+    <!-- Header -->
+    <header>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Privacy Policy
+      </div>
+      <h1>YT Shorts Frame<br/><span>by HVS</span></h1>
+      <p class="header-sub">We believe in radical transparency. Here's exactly what this extension does — and doesn't — do with your data.</p>
+      <div class="header-meta">
+        <span class="meta-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Effective: June 2025
+        </span>
+        <span class="meta-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Chrome Extension · Manifest V3
+        </span>
+        <span class="meta-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          youtube.com only
+        </span>
+      </div>
+    </header>
+
+    <!-- 1. Overview -->
+    <div class="card card-accent">
+      <div class="section-num">
+        <div class="num">01</div>
+        <h2>Overview</h2>
+      </div>
+      <p>
+        YT Shorts Frame by HVS is a Chrome browser extension that adds frame-by-frame playback navigation to YouTube Shorts. Using the comma <strong style="color:#fff">(,)</strong> and period <strong style="color:#fff">(.)</strong> keys, users can step through a paused Short one frame at a time.
+      </p>
+      <p>
+        This Privacy Policy explains what information the extension accesses, what it does with that information, and your rights as a user. The short answer: we collect nothing.
+      </p>
+
+      <div class="highlight-card">
+        <div class="shield-icon">🛡️</div>
+        <div class="highlight-text">
+          <strong>Zero Data Collection — Always</strong>
+          <span>This extension does not collect, store, transmit, or share any personal data, browsing history, or usage information. Ever. No exceptions.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. What we access -->
+    <div class="card">
+      <div class="section-num">
+        <div class="num">02</div>
+        <h2>What the Extension Accesses</h2>
+      </div>
+      <p>
+        To function, the extension needs to interact with your browser in limited, specific ways. Here is a complete and honest list of what it accesses:
+      </p>
+
+      <div class="perm-list">
+        <div class="perm-item">
+          <span class="perm-tag">activeTab</span>
+          <span class="perm-desc">Reads the URL of the currently active tab <em>only</em> when you click the extension icon. This is used solely to display a status message in the popup (e.g., "You're on a Shorts page"). The URL is never stored or transmitted anywhere.</span>
+        </div>
+        <div class="perm-item">
+          <span class="perm-tag">scripting</span>
+          <span class="perm-desc">Injects a small JavaScript file into YouTube pages. This script listens for keyboard presses and controls the video element's playback position. It cannot read your passwords, form inputs, or any personal information on the page.</span>
+        </div>
+        <div class="perm-item">
+          <span class="perm-tag">youtube.com/*</span>
+          <span class="perm-desc">The content script is limited to running on <code style="color:#ff8a7a;font-size:12px;">youtube.com</code> only. It activates its frame-step logic exclusively when the page URL contains <code style="color:#ff8a7a;font-size:12px;">/shorts/</code> — it is entirely dormant on all other YouTube pages and all other websites.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. What we do NOT collect -->
+    <div class="card">
+      <div class="section-num">
+        <div class="num">03</div>
+        <h2>What We Do Not Collect</h2>
+      </div>
+      <p>To be explicit, this extension does <strong style="color:#fff">not</strong> collect, access, process, or transmit any of the following:</p>
+
+      <div class="perm-list" style="margin-top:16px;">
+        <div class="perm-item">
+          <span class="perm-tag" style="background:rgba(100,100,255,0.12);border-color:rgba(100,100,255,0.25);color:#9b9bff;">Personal Data</span>
+          <span class="perm-desc">No name, email address, account details, IP address, or demographic information of any kind.</span>
+        </div>
+        <div class="perm-item">
+          <span class="perm-tag" style="background:rgba(100,100,255,0.12);border-color:rgba(100,100,255,0.25);color:#9b9bff;">Browsing History</span>
+          <span class="perm-desc">No record of which websites you visit, which YouTube videos you watch, or which Shorts you view.</span>
+        </div>
+        <div class="perm-item">
+          <span class="perm-tag" style="background:rgba(100,100,255,0.12);border-color:rgba(100,100,255,0.25);color:#9b9bff;">Usage Analytics</span>
+          <span class="perm-desc">No telemetry, crash reports, feature usage tracking, or analytics of any kind. We have no idea how often you use the extension.</span>
+        </div>
+        <div class="perm-item">
+          <span class="perm-tag" style="background:rgba(100,100,255,0.12);border-color:rgba(100,100,255,0.25);color:#9b9bff;">Keystrokes</span>
+          <span class="perm-desc">The keyboard listener only checks if the key pressed is <strong style="color:#fff">,</strong> or <strong style="color:#fff">.</strong> on a Shorts page. No keylogging. No other keys are read or recorded.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Network requests -->
+    <div class="card">
+      <div class="section-num">
+        <div class="num">04</div>
+        <h2>Network Requests</h2>
+      </div>
+      <p>
+        This extension makes <strong style="color:#fff">zero network requests</strong>. It does not connect to any server, API, or third-party service. It does not phone home to any backend. All processing happens entirely within your browser on your local machine.
+      </p>
+      <p>
+        You can verify this yourself using Chrome DevTools → Network tab while the extension is active. You will see no outbound requests originating from the extension.
+      </p>
+    </div>
+
+    <!-- 5. Third-party services -->
+    <div class="card">
+      <div class="section-num">
+        <div class="num">05</div>
+        <h2>Third-Party Services</h2>
+      </div>
+      <p>
+        This extension does not integrate with, communicate with, or share data with any third-party services, analytics platforms, advertising networks, or data brokers. There are no SDKs, tracking pixels, or external libraries loaded at runtime.
+      </p>
+    </div>
+
+    <!-- 6. Data storage -->
+    <div class="card">
+      <div class="section-num">
+        <div class="num">06</div>
+        <h2>Local Storage &amp; Cookies</h2>
+      </div>
+      <p>
+        The extension does not use <code style="color:#ff8a7a;font-size:13px;">localStorage</code>, <code style="color:#ff8a7a;font-size:13px;">chrome.storage</code>, <code style="color:#ff8a7a;font-size:13px;">IndexedDB</code>, cookies, or any other persistence mechanism. No data is written to your disk. When you close the YouTube tab, nothing about your session is retained.
+      </p>
+    </div>
+
+    <!-- 7. Children -->
+    <div class="card">
+      <div class="section-num">
+        <div class="num">07</div>
+        <h2>Children's Privacy</h2>
+      </div>
+      <p>
+        This extension does not collect any data from any users, including children under the age of 13. Because no data is collected at all, COPPA and similar regulations are satisfied by default.
+      </p>
+    </div>
+
+    <!-- 8. Changes -->
+    <div class="card">
+      <div class="section-num">
+        <div class="num">08</div>
+        <h2>Changes to This Policy</h2>
+      </div>
+      <p>
+        If this Privacy Policy is ever updated, the new version will be published at this URL with a revised effective date. Because this extension collects no data, any future changes are unlikely to affect user privacy in a meaningful way. Users are encouraged to review this page periodically.
+      </p>
+    </div>
+
+    <!-- 9. Contact -->
+    <div class="card">
+      <div class="section-num">
+        <div class="num">09</div>
+        <h2>Contact &amp; Developer</h2>
+      </div>
+      <p>
+        This extension is developed and maintained by <strong style="color:#fff">HVS (Harsh Vardhan Solanki)</strong>. If you have any questions, concerns, or feedback regarding this Privacy Policy or the extension's behavior, please reach out via either of the contacts below.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-label">Primary</div>
+          <a href="mailto:hvs@harshvardhansolanki.com" class="contact-email">hvs@harshvardhansolanki.com</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">Alternate</div>
+          <a href="mailto:harshpratapsinghhh@gmail.com" class="contact-email">harshpratapsinghhh@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-brand">YT Shorts Frame <span>by HVS</span></div>
+      <div class="footer-note">© 2025 Harsh Vardhan Solanki · Chrome Extension · All rights reserved</div>
+    </footer>
+
+  </div>
+</body>
+</html>
