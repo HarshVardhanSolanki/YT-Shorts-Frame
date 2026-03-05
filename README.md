@@ -121,12 +121,3 @@ No data is collected. No network requests are made. Nothing is tracked. All logi
 
 ---
 
-## License
-
-MIT — do whatever you want with it.
-
----
-
-<p align="center">
-  Built because YouTube should have shipped this years ago.
-</p>
